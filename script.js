@@ -1,8 +1,6 @@
-// PAGE CHANGE
+// PAGE SWITCH
 
 function nextPage(page){
-
-heartExplosion()
 
 document.querySelectorAll(".page").forEach(p=>{
 p.classList.remove("active")
@@ -41,29 +39,33 @@ setInterval(updateTimer,1000)
 
 
 
-// TYPEWRITER LETTER
+// TYPEWRITER
 
-let text=`These three months with you have been the most beautiful part of my life.
+let message=`These three months with you have been the most beautiful part of my life.
 
 Your smile makes every day brighter and your love makes my world complete.
 
-Thank you for loving me and being with me.
+Thank you for loving me and staying beside me.
 
 Happy 3 month anniversary my love ❤️`
 
-let i=0
+let index=0
 
 function startTypewriter(){
 
-let el=document.getElementById("letter")
+let textElement=document.getElementById("typeText")
 
-let interval=setInterval(()=>{
+textElement.innerHTML=""
 
-el.innerHTML+=text[i]
+index=0
 
-i++
+let typing=setInterval(()=>{
 
-if(i>=text.length) clearInterval(interval)
+textElement.innerHTML+=message[index]
+
+index++
+
+if(index>=message.length) clearInterval(typing)
 
 },40)
 
@@ -71,33 +73,7 @@ if(i>=text.length) clearInterval(interval)
 
 
 
-// HEART FIREWORKS
-
-function heartExplosion(){
-
-for(let i=0;i<20;i++){
-
-let heart=document.createElement("div")
-
-heart.innerHTML="💖"
-
-heart.className="fire"
-
-heart.style.left=Math.random()*window.innerWidth+"px"
-
-heart.style.top=Math.random()*window.innerHeight+"px"
-
-document.getElementById("hearts-container").appendChild(heart)
-
-setTimeout(()=>heart.remove(),1000)
-
-}
-
-}
-
-
-
-// ROMANTIC GAME (MOBILE)
+// ROMANTIC GAME
 
 let score=0
 
@@ -105,21 +81,22 @@ function startGame(){
 
 let area=document.getElementById("gameArea")
 
-let scoreBoard=document.getElementById("score")
+let scoreText=document.getElementById("score")
 
-let game=setInterval(()=>{
+let spawn=setInterval(()=>{
 
 let heart=document.createElement("div")
 
 heart.innerHTML="❤️"
 
-heart.className="gameHeart"
+heart.className="heart"
 
-heart.style.left=Math.random()*80+"%"
+heart.style.left=Math.random()*90+"%"
 
 heart.style.top=Math.random()*80+"%"
 
 area.appendChild(heart)
+
 
 heart.onclick=()=>{
 
@@ -127,11 +104,11 @@ heart.remove()
 
 score++
 
-scoreBoard.innerHTML=score+" / 10"
+scoreText.innerHTML=score+" / 7"
 
-if(score>=10){
+if(score>=7){
 
-clearInterval(game)
+clearInterval(spawn)
 
 nextPage(4)
 
@@ -141,6 +118,7 @@ startSlideshow()
 
 }
 
+
 setTimeout(()=>heart.remove(),2000)
 
 },800)
@@ -149,11 +127,11 @@ setTimeout(()=>heart.remove(),2000)
 
 
 
-// SLIDESHOW
+// PHOTO SLIDESHOW
 
 function startSlideshow(){
 
-let images=document.querySelectorAll(".slideshow img")
+let slides=document.querySelectorAll(".slide")
 
 let song=document.getElementById("song")
 
@@ -161,59 +139,28 @@ song.play()
 
 let i=0
 
-images[0].style.display="block"
+slides[0].style.display="block"
 
-let slide=setInterval(()=>{
+let show=setInterval(()=>{
 
-images[i].style.display="none"
+slides[i].style.display="none"
 
 i++
 
-if(i>=images.length){
+if(i>=slides.length){
 
-clearInterval(slide)
+clearInterval(show)
 
 song.pause()
 
-document.getElementById("popup").style.display="block"
+document.getElementById("finalMessage").style.display="block"
 
 return
 
 }
 
-images[i].style.display="block"
+slides[i].style.display="block"
 
 },3000)
 
 }
-
-
-
-// FINAL FIREWORKS
-
-function fireworks(){
-
-for(let i=0;i<50;i++){
-
-let heart=document.createElement("div")
-
-heart.innerHTML="💖"
-
-heart.className="fire"
-
-heart.style.left=Math.random()*window.innerWidth+"px"
-
-heart.style.top=Math.random()*window.innerHeight+"px"
-
-document.body.appendChild(heart)
-
-setTimeout(()=>heart.remove(),1000)
-
-}
-
-}
-requestAnimationFrame(drawStars)
-
-}
-
-drawStars()
