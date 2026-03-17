@@ -1,8 +1,8 @@
-// PAGE SWITCH
+// PAGE CHANGE
 
 function nextPage(page){
 
-createHearts()
+heartExplosion()
 
 document.querySelectorAll(".page").forEach(p=>{
 p.classList.remove("active")
@@ -10,33 +10,17 @@ p.classList.remove("active")
 
 document.getElementById("page"+page).classList.add("active")
 
-}
+if(page==2) startTypewriter()
 
-// HEART RAIN
-
-function createHearts(){
-
-for(let i=0;i<50;i++){
-
-let heart=document.createElement("div")
-
-heart.innerHTML="❤️"
-
-heart.className="heart"
-
-heart.style.left=Math.random()*100+"%"
-
-document.getElementById("hearts").appendChild(heart)
-
-setTimeout(()=>heart.remove(),3000)
+if(page==3) startGame()
 
 }
 
-}
+
 
 // RELATIONSHIP TIMER
 
-let startDate=new Date("Dec 18 2025 00:00:00")
+let startDate=new Date("Dec 18 2025")
 
 function updateTimer(){
 
@@ -49,37 +33,105 @@ let days=Math.floor(diff/(1000*60*60*24))
 let hours=Math.floor((diff/(1000*60*60))%24)
 
 document.getElementById("timer").innerHTML=
-"Together for "+days+" days "+hours+" hours"
+"Together for "+days+" days "+hours+" hours ❤️"
 
 }
 
 setInterval(updateTimer,1000)
 
 
-// GAME
 
-let player=document.getElementById("player")
-let target=document.getElementById("target")
+// TYPEWRITER LETTER
 
-let x=180
+let text=`These three months with you have been the most beautiful part of my life.
 
-document.addEventListener("keydown",(e)=>{
+Your smile makes every day brighter and your love makes my world complete.
 
-if(e.key==="ArrowLeft") x-=20
-if(e.key==="ArrowRight") x+=20
+Thank you for loving me and being with me.
 
-player.style.left=x+"px"
+Happy 3 month anniversary my love ❤️`
 
-checkCatch()
+let i=0
 
-})
+function startTypewriter(){
 
-function checkCatch(){
+let el=document.getElementById("letter")
 
-let p=player.getBoundingClientRect()
-let t=target.getBoundingClientRect()
+let interval=setInterval(()=>{
 
-if(Math.abs(p.left-t.left)<40){
+el.innerHTML+=text[i]
+
+i++
+
+if(i>=text.length) clearInterval(interval)
+
+},40)
+
+}
+
+
+
+// HEART FIREWORKS
+
+function heartExplosion(){
+
+for(let i=0;i<20;i++){
+
+let heart=document.createElement("div")
+
+heart.innerHTML="💖"
+
+heart.className="fire"
+
+heart.style.left=Math.random()*window.innerWidth+"px"
+
+heart.style.top=Math.random()*window.innerHeight+"px"
+
+document.getElementById("hearts-container").appendChild(heart)
+
+setTimeout(()=>heart.remove(),1000)
+
+}
+
+}
+
+
+
+// ROMANTIC GAME (MOBILE)
+
+let score=0
+
+function startGame(){
+
+let area=document.getElementById("gameArea")
+
+let scoreBoard=document.getElementById("score")
+
+let game=setInterval(()=>{
+
+let heart=document.createElement("div")
+
+heart.innerHTML="❤️"
+
+heart.className="gameHeart"
+
+heart.style.left=Math.random()*80+"%"
+
+heart.style.top=Math.random()*80+"%"
+
+area.appendChild(heart)
+
+heart.onclick=()=>{
+
+heart.remove()
+
+score++
+
+scoreBoard.innerHTML=score+" / 10"
+
+if(score>=10){
+
+clearInterval(game)
 
 nextPage(4)
 
@@ -88,6 +140,13 @@ startSlideshow()
 }
 
 }
+
+setTimeout(()=>heart.remove(),2000)
+
+},800)
+
+}
+
 
 
 // SLIDESHOW
@@ -104,7 +163,7 @@ let i=0
 
 images[0].style.display="block"
 
-let interval=setInterval(()=>{
+let slide=setInterval(()=>{
 
 images[i].style.display="none"
 
@@ -112,7 +171,7 @@ i++
 
 if(i>=images.length){
 
-clearInterval(interval)
+clearInterval(slide)
 
 song.pause()
 
@@ -129,62 +188,30 @@ images[i].style.display="block"
 }
 
 
-// FIREWORKS
+
+// FINAL FIREWORKS
 
 function fireworks(){
 
-for(let i=0;i<80;i++){
+for(let i=0;i<50;i++){
 
 let heart=document.createElement("div")
 
 heart.innerHTML="💖"
 
-heart.className="heart"
+heart.className="fire"
 
-heart.style.left=Math.random()*100+"%"
+heart.style.left=Math.random()*window.innerWidth+"px"
+
+heart.style.top=Math.random()*window.innerHeight+"px"
 
 document.body.appendChild(heart)
 
-setTimeout(()=>heart.remove(),2000)
+setTimeout(()=>heart.remove(),1000)
 
 }
 
 }
-
-
-// STARRY BACKGROUND
-
-let canvas=document.getElementById("stars")
-
-let ctx=canvas.getContext("2d")
-
-canvas.width=window.innerWidth
-canvas.height=window.innerHeight
-
-let stars=[]
-
-for(let i=0;i<200;i++){
-
-stars.push({
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-r:Math.random()*2
-})
-
-}
-
-function drawStars(){
-
-ctx.clearRect(0,0,canvas.width,canvas.height)
-
-ctx.fillStyle="white"
-
-stars.forEach(s=>{
-ctx.beginPath()
-ctx.arc(s.x,s.y,s.r,0,Math.PI*2)
-ctx.fill()
-})
-
 requestAnimationFrame(drawStars)
 
 }
