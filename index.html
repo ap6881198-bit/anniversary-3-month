@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 
-<title>Our 3 Month Anniversary</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Our Love Story</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -10,23 +13,22 @@
 
 <body>
 
-<canvas id="stars"></canvas>
-
-<div id="hearts"></div>
+<div id="hearts-container"></div>
 
 <!-- PAGE 1 -->
 
 <section id="page1" class="page active">
 
-<h1>Happy 3 Month Anniversary My Love ❤️</h1>
+<h1>Happy 3 Month Anniversary ❤️</h1>
 
 <p>You make my life brighter everyday</p>
 
 <div id="timer"></div>
 
-<button onclick="nextPage(2)">Next</button>
+<button class="loveBtn" onclick="nextPage(2)">Next</button>
 
 </section>
+
 
 <!-- PAGE 2 LETTER -->
 
@@ -34,24 +36,12 @@
 
 <h2>My Love 💌</h2>
 
-<p class="letter">
+<p id="letter"></p>
 
-These three months with you have been the most beautiful chapter of my life.
-
-Every moment with you feels magical.  
-Your smile brightens my darkest days and your love fills my heart with happiness.
-
-Thank you for loving me, understanding me and staying beside me.
-
-I promise to keep loving you more every single day.
-
-Happy 3 month anniversary my love ❤️
-
-</p>
-
-<button onclick="nextPage(3)">Next</button>
+<button class="loveBtn" onclick="nextPage(3)">Next</button>
 
 </section>
+
 
 <!-- PAGE 3 GAME -->
 
@@ -59,29 +49,29 @@ Happy 3 month anniversary my love ❤️
 
 <h2>Catch My Heart ❤️</h2>
 
-<p>Use the arrow keys to catch my heart</p>
+<p>Tap the hearts to collect them</p>
 
-<div id="game">
+<div id="gameArea"></div>
 
-<div id="player">💖</div>
-
-<div id="target">❤️</div>
-
-</div>
+<div id="score">0 / 10</div>
 
 </section>
+
 
 <!-- PAGE 4 SLIDESHOW -->
 
 <section id="page4" class="page">
 
-<h2>Our Beautiful Memories ❤️</h2>
+<h2>Our Memories ❤️</h2>
 
 <div class="slideshow">
 
 <img src="images/photo1.jpg">
+
 <img src="images/photo2.jpg">
+
 <img src="images/photo3.jpg">
+
 <img src="images/photo4.jpg">
 
 </div>
@@ -90,7 +80,8 @@ Happy 3 month anniversary my love ❤️
 
 </section>
 
-<!-- FINAL MESSAGE -->
+
+<!-- FINAL POPUP -->
 
 <div id="popup">
 
@@ -110,6 +101,7 @@ I love you my love ❤️
 <button onclick="fireworks()">I Love You ❤️</button>
 
 </div>
+
 
 <script src="script.js"></script>
 
