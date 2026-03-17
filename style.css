@@ -1,9 +1,10 @@
 body{
 margin:0;
 font-family:Arial;
-text-align:center;
-background:#111;
+background:#0a0a1a;
 color:white;
+text-align:center;
+overflow:hidden;
 }
 
 .page{
@@ -52,6 +53,61 @@ padding-right:5px;
 }
 
 
+
+/* 3D HEART BACKGROUND */
+
+.heart-bg{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+overflow:hidden;
+z-index:-1;
+}
+
+.heart-bg span{
+position:absolute;
+width:25px;
+height:25px;
+background:red;
+transform:rotate(45deg);
+animation:float 12s linear infinite;
+}
+
+.heart-bg span:before,
+.heart-bg span:after{
+content:"";
+position:absolute;
+width:25px;
+height:25px;
+background:red;
+border-radius:50%;
+}
+
+.heart-bg span:before{
+top:-12px;
+left:0;
+}
+
+.heart-bg span:after{
+left:-12px;
+top:0;
+}
+
+@keyframes float{
+0%{
+transform:translateY(100vh) rotate(45deg);
+opacity:0;
+}
+100%{
+transform:translateY(-10vh) rotate(45deg);
+opacity:1;
+}
+}
+
+
+
 /* GAME */
 
 #gameArea{
@@ -60,7 +116,6 @@ max-width:500px;
 height:300px;
 border:2px solid pink;
 position:relative;
-margin-top:20px;
 overflow:hidden;
 }
 
@@ -68,27 +123,20 @@ overflow:hidden;
 position:absolute;
 font-size:30px;
 cursor:pointer;
-transition:transform .2s;
 }
 
-.heart:hover{
-transform:scale(1.3);
-}
 
 
 /* SLIDESHOW */
 
-.slideshow{
-position:relative;
-}
-
 .slide{
 width:300px;
 border-radius:15px;
-box-shadow:0 0 25px pink;
 display:none;
+box-shadow:0 0 25px pink;
 animation:fade 2s;
 }
+
 
 
 /* FINAL MESSAGE */
