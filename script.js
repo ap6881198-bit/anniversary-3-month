@@ -1,5 +1,3 @@
-// PAGE SWITCH
-
 function nextPage(page){
 
 document.querySelectorAll(".page").forEach(p=>{
@@ -16,7 +14,7 @@ if(page==3) startGame()
 
 
 
-// RELATIONSHIP TIMER
+// TIMER
 
 let startDate=new Date("Dec 18 2025")
 
@@ -49,23 +47,21 @@ Thank you for loving me and staying beside me.
 
 Happy 3 month anniversary my love ❤️`
 
-let index=0
-
 function startTypewriter(){
 
-let textElement=document.getElementById("typeText")
+let el=document.getElementById("typeText")
 
-textElement.innerHTML=""
+el.innerHTML=""
 
-index=0
+let i=0
 
 let typing=setInterval(()=>{
 
-textElement.innerHTML+=message[index]
+el.innerHTML+=message[i]
 
-index++
+i++
 
-if(index>=message.length) clearInterval(typing)
+if(i>=message.length) clearInterval(typing)
 
 },40)
 
@@ -73,7 +69,7 @@ if(index>=message.length) clearInterval(typing)
 
 
 
-// ROMANTIC GAME
+// GAME
 
 let score=0
 
@@ -118,16 +114,15 @@ startSlideshow()
 
 }
 
-
 setTimeout(()=>heart.remove(),2000)
 
-},800)
+},700)
 
 }
 
 
 
-// PHOTO SLIDESHOW
+// SLIDESHOW + SONG
 
 function startSlideshow(){
 
@@ -135,7 +130,9 @@ let slides=document.querySelectorAll(".slide")
 
 let song=document.getElementById("song")
 
-song.play()
+song.currentTime=0
+
+song.play().catch(()=>{})
 
 let i=0
 
