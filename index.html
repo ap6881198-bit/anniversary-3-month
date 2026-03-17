@@ -5,7 +5,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Our Love Story</title>
+<title>Happy 3 Months ❤️</title>
 
 <link rel="stylesheet" href="style.css">
 
@@ -13,21 +13,21 @@
 
 <body>
 
-<div id="hearts-container"></div>
 
 <!-- PAGE 1 -->
 
 <section id="page1" class="page active">
 
-<h1>Happy 3 Month Anniversary ❤️</h1>
+<h1>Happy 3 Month Anniversary My Love ❤️</h1>
 
 <p>You make my life brighter everyday</p>
 
 <div id="timer"></div>
 
-<button class="loveBtn" onclick="nextPage(2)">Next</button>
+<button onclick="nextPage(2)">Next</button>
 
 </section>
+
 
 
 <!-- PAGE 2 LETTER -->
@@ -36,11 +36,12 @@
 
 <h2>My Love 💌</h2>
 
-<p id="letter"></p>
+<p id="typeText"></p>
 
-<button class="loveBtn" onclick="nextPage(3)">Next</button>
+<button onclick="nextPage(3)">Next</button>
 
 </section>
+
 
 
 <!-- PAGE 3 GAME -->
@@ -49,16 +50,17 @@
 
 <h2>Catch My Heart ❤️</h2>
 
-<p>Tap the hearts to collect them</p>
+<p>Tap the moving hearts</p>
 
 <div id="gameArea"></div>
 
-<div id="score">0 / 10</div>
+<div id="score">0 / 7</div>
 
 </section>
 
 
-<!-- PAGE 4 SLIDESHOW -->
+
+<!-- PAGE 4 PHOTOS -->
 
 <section id="page4" class="page">
 
@@ -66,13 +68,10 @@
 
 <div class="slideshow">
 
-<img src="images/photo1.jpg">
-
-<img src="images/photo2.jpg">
-
-<img src="images/photo3.jpg">
-
-<img src="images/photo4.jpg">
+<img src="images/photo1.jpg" class="slide">
+<img src="images/photo2.jpg" class="slide">
+<img src="images/photo3.jpg" class="slide">
+<img src="images/photo4.jpg" class="slide">
 
 </div>
 
@@ -81,27 +80,30 @@
 </section>
 
 
-<!-- FINAL POPUP -->
 
-<div id="popup">
+<!-- FINAL MESSAGE -->
+
+<div id="finalMessage">
 
 <p>
 
 I never lied when I said I love you.  
-I never cared about your past.  
+I never cared about your past.
 
 I only want to create our future together.
 
-Once again…
-
+Once again…  
 I love you my love ❤️
 
 </p>
 
-<button onclick="fireworks()">I Love You ❤️</button>
-
 </div>
 
+
+<script src="script.js"></script>
+
+</body>
+</html>
 
 <script src="script.js"></script>
 
